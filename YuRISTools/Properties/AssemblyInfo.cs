@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("YuRIS Tools")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("FENGberd")]
+[assembly: AssemblyCompany("ImKota")]
 [assembly: AssemblyProduct("YuRIS Tools")]
-[assembly: AssemblyCopyright("Copyright © FENGberd 2020")]
+[assembly: AssemblyCopyright("Copyright © ImKota 2022")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

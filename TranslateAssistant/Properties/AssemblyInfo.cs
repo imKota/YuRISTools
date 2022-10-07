@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("TranslateAssistant")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("ImKota")]
 [assembly: AssemblyProduct("TranslateAssistant")]
-[assembly: AssemblyCopyright("Copyright ©  2020")]
+[assembly: AssemblyCopyright("Copyright © ImKota 20222")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
