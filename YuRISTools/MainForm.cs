@@ -125,6 +125,8 @@ namespace YuRISTools
                 Log("[YPF Unpack] Complete, unpacked " + success + "/" + files.Count + " files.");
                 Invoke(new Action(() => groupBox1.Enabled = true));
             });
+
+            button_ystb_key_find_Click(sender, e);
         }
 
         private void button_ypf_pack_Click(object sender, EventArgs e)
@@ -333,6 +335,49 @@ namespace YuRISTools
                 Log("[YSTB Patch] Patch complete: " + counter + "/" + files.Count + " files.");
             }
             catch (Exception ex) { Oops(ex); }
+        }
+        private static UInt32 ReverseBytes(UInt32 value)
+        {
+            return (value & 0x000000FFU) << 24 | (value & 0x0000FF00U) << 8 |
+                   (value & 0x00FF0000U) >> 8 | (value & 0xFF000000U) >> 24;
+        }
+
+        private void button_ystb_key_find_Click(object sender, EventArgs e)
+        {
+            byte[] script;
+            uint xor_key;
+            int instrOffset, instrSize, attrOffset, attrSize, attriOffset, attrValSize, lineOffset, lineSize;
+
+            string ybn_path = textBox_ystb_cipher_input.Text + "yst00000.ybn";
+
+            if (File.Exists(ybn_path))
+            {
+                script = File.ReadAllBytes(ybn_path);
+
+                MemoryStream memoryStream = new MemoryStream(script);
+                BinaryReader binaryReader = new BinaryReader((Stream)memoryStream);
+
+                binaryReader.ReadInt32();
+                binaryReader.ReadInt32();
+                binaryReader.ReadInt32();
+                instrSize = binaryReader.ReadInt32();
+                attrSize = binaryReader.ReadInt32();
+                attrValSize = binaryReader.ReadInt32();
+                lineSize = binaryReader.ReadInt32();
+                binaryReader.ReadInt32();
+                instrOffset = (int)memoryStream.Position;
+                attrOffset = instrOffset + instrSize;
+                attriOffset = attrOffset + attrSize;
+                lineOffset = attriOffset + attrValSize;
+
+                if (lineOffset + lineSize == script.Length && attrSize > 0)
+                {
+                    xor_key = ReverseBytes(BitConverter.ToUInt32(script, attrOffset + 8));
+
+                    textBox_ystb_cipher_key.Text = string.Format("{0:X4}", (object)xor_key);
+                    textBox_ystb_cipher_key_2.Text = string.Format("{0:X4}", (object)xor_key);
+                }
+            }
         }
     }
 }

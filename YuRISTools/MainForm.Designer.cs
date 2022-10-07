@@ -35,7 +35,7 @@ namespace YuRISTools
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox8 = new System.Windows.Forms.GroupBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.textBox_ystb_cipher_key_2 = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.button_ystb_cipher_encrypt = new System.Windows.Forms.Button();
             this.label17 = new System.Windows.Forms.Label();
@@ -90,6 +90,7 @@ namespace YuRISTools
             this.label7 = new System.Windows.Forms.Label();
             this.textBox_ypf_unpack_input = new System.Windows.Forms.TextBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.button_ystb_key_find = new System.Windows.Forms.Button();
             this.tabPage2.SuspendLayout();
             this.groupBox8.SuspendLayout();
             this.groupBox7.SuspendLayout();
@@ -138,7 +139,7 @@ namespace YuRISTools
             // 
             // groupBox8
             // 
-            this.groupBox8.Controls.Add(this.textBox1);
+            this.groupBox8.Controls.Add(this.textBox_ystb_cipher_key_2);
             this.groupBox8.Controls.Add(this.label16);
             this.groupBox8.Controls.Add(this.button_ystb_cipher_encrypt);
             this.groupBox8.Controls.Add(this.label17);
@@ -152,14 +153,14 @@ namespace YuRISTools
             this.groupBox8.TabStop = false;
             this.groupBox8.Text = "YSTB Cipher";
             // 
-            // textBox1
+            // textBox_ystb_cipher_key_2
             // 
-            this.textBox1.AllowDrop = true;
-            this.textBox1.Location = new System.Drawing.Point(558, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(65, 20);
-            this.textBox1.TabIndex = 16;
-            this.textBox1.Text = "58FFFB91";
+            this.textBox_ystb_cipher_key_2.AllowDrop = true;
+            this.textBox_ystb_cipher_key_2.Location = new System.Drawing.Point(558, 19);
+            this.textBox_ystb_cipher_key_2.Name = "textBox_ystb_cipher_key_2";
+            this.textBox_ystb_cipher_key_2.Size = new System.Drawing.Size(65, 20);
+            this.textBox_ystb_cipher_key_2.TabIndex = 16;
+            this.textBox_ystb_cipher_key_2.Text = "00000000";
             // 
             // label16
             // 
@@ -337,6 +338,7 @@ namespace YuRISTools
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.button_ystb_key_find);
             this.groupBox4.Controls.Add(this.button_ystb_crc32_key);
             this.groupBox4.Controls.Add(this.label11);
             this.groupBox4.Controls.Add(this.textBox_ystb_crc32);
@@ -349,9 +351,9 @@ namespace YuRISTools
             // 
             // button_ystb_crc32_key
             // 
-            this.button_ystb_crc32_key.Location = new System.Drawing.Point(529, 20);
+            this.button_ystb_crc32_key.Location = new System.Drawing.Point(434, 20);
             this.button_ystb_crc32_key.Name = "button_ystb_crc32_key";
-            this.button_ystb_crc32_key.Size = new System.Drawing.Size(94, 23);
+            this.button_ystb_crc32_key.Size = new System.Drawing.Size(90, 23);
             this.button_ystb_crc32_key.TabIndex = 17;
             this.button_ystb_crc32_key.Text = "Hash && Fill";
             this.button_ystb_crc32_key.UseVisualStyleBackColor = true;
@@ -371,7 +373,7 @@ namespace YuRISTools
             this.textBox_ystb_crc32.AllowDrop = true;
             this.textBox_ystb_crc32.Location = new System.Drawing.Point(53, 22);
             this.textBox_ystb_crc32.Name = "textBox_ystb_crc32";
-            this.textBox_ystb_crc32.Size = new System.Drawing.Size(470, 20);
+            this.textBox_ystb_crc32.Size = new System.Drawing.Size(375, 20);
             this.textBox_ystb_crc32.TabIndex = 12;
             this.textBox_ystb_crc32.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBox_DragDrop);
             this.textBox_ystb_crc32.DragOver += new System.Windows.Forms.DragEventHandler(this.textBox_DragOver);
@@ -399,7 +401,7 @@ namespace YuRISTools
             this.textBox_ystb_cipher_key.Name = "textBox_ystb_cipher_key";
             this.textBox_ystb_cipher_key.Size = new System.Drawing.Size(65, 20);
             this.textBox_ystb_cipher_key.TabIndex = 16;
-            this.textBox_ystb_cipher_key.Text = "58FFFB91";
+            this.textBox_ystb_cipher_key.Text = "00000000";
             // 
             // label10
             // 
@@ -725,6 +727,16 @@ namespace YuRISTools
             this.tabControl1.Size = new System.Drawing.Size(654, 354);
             this.tabControl1.TabIndex = 0;
             // 
+            // button_ystb_key_find
+            // 
+            this.button_ystb_key_find.Location = new System.Drawing.Point(529, 20);
+            this.button_ystb_key_find.Name = "button_ystb_key_find";
+            this.button_ystb_key_find.Size = new System.Drawing.Size(94, 23);
+            this.button_ystb_key_find.TabIndex = 18;
+            this.button_ystb_key_find.Text = "Find XOR key";
+            this.button_ystb_key_find.UseVisualStyleBackColor = true;
+            this.button_ystb_key_find.Click += new System.EventHandler(this.button_ystb_key_find_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -814,13 +826,14 @@ namespace YuRISTools
         private System.Windows.Forms.TextBox textBox_ypf_unpack_input;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.GroupBox groupBox8;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox textBox_ystb_cipher_key_2;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Button button_ystb_cipher_encrypt;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox textBox_ystb_text_patched_done;
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox textBox_ystb_text_patched_input;
+        private System.Windows.Forms.Button button_ystb_key_find;
     }
 }
 

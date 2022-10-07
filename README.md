@@ -5,4 +5,5 @@ Major Functions:
 * YPF Unpacking/Packing
 * YSER Parsing (No GUI)
 * YSCM Parsing (No standalone GUI)
+* YSTB Auto XOR key finder
 * YSTB Parsing, patching and regenerate (YSCM required)
